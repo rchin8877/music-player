@@ -1,0 +1,96 @@
+ARROW FUNCTION 
+    - An arrow function is an anonymous function expression and a shorter way to write functions. Anonymous means that the function does not have a name. Arrow functions are often anonymous as per exampleFunction
+    - By assigning the arrow function definition to a variable, you bind it to an identifier.
+            const exampleFunction = () => {
+            // code goes here
+            }
+    - Basic syntax not assigned to a variable/name: () => {} 
+
+    - Implicit return: exclude curly brackets and return (only 1 line of code within body)
+    - PERFECT for callbacks
+    - 'this' is not!! binding to obj it is called upon...which is needed for ex:
+        btn.addEventListener("click", function () {
+        console.log(this); // ✅ button element
+        });
+
+        btn.addEventListener("click", () => {
+        console.log(this); // ❌ probably undefined or window
+        });
+
+
+    WHAT IS THIS... 
+    - Arrow functions do not have their own this.
+    - They inherit this from the surrounding (parent) scope — this is called lexical scoping.
+            const obj = {
+            name: "JS",
+            say: function () {
+                console.log("Regular:", this.name);
+            },
+            sayArrow: () => {
+                console.log("Arrow:", this.name);
+            }
+            };
+
+            obj.say();       // Regular: JS
+            obj.sayArrow();  // Arrow: undefined
+
+    - 'this' refers to the object that owns or called the function, not the function itself.
+    - The thing to the left of the dot when the function is called
+    - When there is no thing to the left of the dot lol or object being called upon a function, 'this' falls back to the global scope
+
+
+CALLBACK FUNCTION   
+    - Passing a function as a parameter into another function 
+    - Use callback functions when you need to execute a function after another function has completed, especially in asynchronous operations or event handling.
+    - .map(), .forEach(), .filter(), eventhandlers
+    - Normal function   
+        [1, 2, 3].map(function (n) {
+            return n * 2;
+        });
+    - Arrow function    
+        [1, 2, 3].map(n => n * 2);
+    **No function keyword, no return keyword (if one-liner), no curly braces**
+    
+
+Map method
+    - The map() method is used to iterate through an array and return a new array. It's helpful when you want to create a new array based on the values of an existing array. 
+    - e.g. const numbers = [1, 2, 3];
+            const doubledNumbers = numbers.map((number) => number * 2); // doubledNumbers will be [2, 4, 6]
+    -  map() method takes a function as an argument. This is called a callback function, which is a function that is passed to another function as an argument.
+
+Join method
+    - array.map().join(""); -> EMPTY string
+    - The join() method is used to concatenate all the elements of an array into a single string. It takes an optional parameter called a separator which is used to separate each element of the array. 
+    - Right now the songsHTML is an array. If you tried to display this as is, you would see the songs separated by commas. This is not the desired outcome because you want to display the songs as a list. To fix this, you will need to join the array into a single string by using the join() method.
+
+Optional Chaining 
+    - Optional chaining (?.) returns undefined instead of throwing an error when accessing a non-existent nested property 
+    - userData?.songs.genre - genre does not exist, but optional chaining will catch it as undefined 
+    
+Sort method
+    - Sorts array alphabetically
+    -  the sort() method is expecting a number to be returned. If you return a negative number, the first item is sorted before the second item.
+    - must have 3 scenarios to handle case where a < b (a comes first, return -1), a > b (returtn 1) and a = b (0)
+    
+
+Find method 
+    - retrieves the first element within an array that fulfills the conditions specified in the provided callback function. If no element satisfies the condition, the method returns undefined.
+
+IndexOf method
+    - Get the index of an element in an array 
+
+forEach method 
+    - The forEach method is used to loop through an array and perform a function on each element of the array. For example, suppose you have an array of numbers and you want to log each number to the console.
+
+filter method (ARRAY specific method)  
+    -  loops through the array and returns a new array
+    - const numArr = [1, 10, 8, 3, 4, 5]
+    const numsGreaterThanThree = numArr.filter((num) => num > 3);
+
+console.log(numsGreaterThanThree) // Output: [10, 8, 4, 5]
+
+functions   
+    If the value is a function, it's a method.
+    If it's any other type (string, number, boolean, object, etc.), it's a property.
+    song.play() -> calling the function
+    song.play -> referencing the function
