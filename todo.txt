@@ -1,0 +1,4 @@
+- README
+- Change CSS, additional functional features
+- Other songs...
+- Album covers
