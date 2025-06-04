@@ -185,6 +185,27 @@ playButton.addEventListener("click", () => {
   } else {
     playSong(userData?.currentSong.id);
   }
+})
+
+document.addEventListener("keydown", (event) => {
+  if (
+    (event.code === "Space" || event.key === " ") &&
+    !["INPUT", "TEXTAREA"].includes(document.activeElement.tagName)
+  ) {
+    event.preventDefault(); // Prevent default spacebar function which is to scroll
+
+    if (audio.paused) {
+      // play the current song or the first one if nothing is playing yet
+      if (userData?.currentSong === null) {
+        playSong(userData?.songs[0].id);
+      } else {
+        playSong(userData?.currentSong.id);
+      }
+    } else {
+      // If audio is playing, pause it
+      pauseSong();
+    }
+  }
 });
 
 const playSong = (id) => {
