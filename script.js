@@ -257,6 +257,16 @@ const playPreviousSong = () => {
    }
 };
 
+document.addEventListener("keydown", (event) => {
+  if (event.code === "ArrowRight") {
+    playNextSong();
+  }
+
+  if (event.code === "ArrowLeft") {
+    playPreviousSong();
+  }
+});
+
 pauseButton.addEventListener("click",  pauseSong);
 nextButton.addEventListener("click", playNextSong);
 previousButton.addEventListener("click", playPreviousSong);
