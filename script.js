@@ -208,6 +208,22 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
+// event is a special object created by the browser when a click happens.
+document.addEventListener("click", function(event) {
+  //“If the thing I clicked on is not inside an element with the class .content…”
+  if (!event.target.closest(".content")) {
+    if (audio.paused) {
+      if (userData?.currentSong === null) {
+        playSong(userData?.songs[0].id);
+      } else {
+        playSong(userData?.currentSong.id);
+      } 
+      } else {
+        pauseSong();
+      }
+  }
+});
+
 const playSong = (id) => {
   const song = userData?.songs.find((song) => song.id === id);
   audio.src = song.src; // Load this audio player with the song file at the src location. audio is a HTMLAudioElement — a real playable audio object unlike song
@@ -340,6 +356,7 @@ audio.addEventListener("ended", () => {
       userData.songCurrentTime = 0; 
     } 
     });
+
 
 pauseSong();
 setPlayerDisplay();
