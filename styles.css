@@ -124,9 +124,14 @@ ul {
   row-gap: 20px;
   padding: 14px;
   background-color: var(--background-color);
-  height: 153px;
+  height: 165px;
   width: 226px;
 }
+
+#volume-slider {
+  accent-color: var(--highlight-color);
+}
+
 
 .player-display-song-artist {
   height: 80px;

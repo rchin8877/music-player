@@ -49,6 +49,14 @@
               <p id="player-song-title"></p>
               <p id="player-song-artist"></p>
             </div>
+            <input type="range" name="volume" id="volume-slider" list="markers">
+            <datalist id="markers">
+              <option value="0"></option>
+              <option value="25"></option>
+              <option value="50"></option>
+              <option value="75"></option>
+              <option value="100"></option>
+            </datalist>
             <div class="player-buttons">
               <button id="previous" class="previous" aria-label="Previous">
                 <svg
